@@ -1,0 +1,50 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: app
+  name: app
+  namespace: aulainfra
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: app
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 25%
+      maxSurge: 25%
+  template:
+    metadata:
+      labels:
+        app: app
+    spec:
+      containers:
+        - image: 475154562783.dkr.ecr.us-east-1.amazonaws.com/springapp
+          imagePullPolicy: Always
+          name: backend
+          env:
+            - name: TZ
+              valueFrom:
+                configMapKeyRef:
+                  name: app-configmap
+                  key: TZ
+          ports:
+            - containerPort: 8080
+          readinessProbe:
+            httpGet:
+              path: /
+              port: 8080
+            initialDelaySeconds: 5
+            periodSeconds: 5
+          livenessProbe:
+            httpGet:
+              path: /
+              port: 8080
+            initialDelaySeconds: 15
+            periodSeconds: 20
+          resources: {}
+      restartPolicy: Always
+      serviceAccountName: ""
+status: {}
