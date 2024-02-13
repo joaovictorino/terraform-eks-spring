@@ -53,13 +53,6 @@ Obter credenciais do EKS
 aws eks --region us-east-1 update-kubeconfig --name eks_demo
 ```
 
-Instalar ElasticSearch
-
-```sh
-kubectl apply -f elastic/01-namespace.yaml
-kubectl apply -f elastic/02-elastic.yaml
-```
-
 Subir configuração da aplicação
 
 ```sh
