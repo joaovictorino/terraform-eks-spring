@@ -63,7 +63,6 @@ spec:
         namespace: aulainfra
       spec:
         accessModes: ["ReadWriteOnce"]
-        storageClassName: "gp2"
         resources:
           requests:
             storage: 10Gi
