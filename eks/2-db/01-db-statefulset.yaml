@@ -54,15 +54,16 @@ spec:
               port: 3306
             initialDelaySeconds: 10
             periodSeconds: 20
-          volumeMounts:
-            - mountPath: /var/lib/mysql
-              name: db-claim
-  volumeClaimTemplates:
-    - metadata:
-        name: db-claim
-        namespace: aulainfra
-      spec:
-        accessModes: ["ReadWriteOnce"]
-        resources:
-          requests:
-            storage: 10Gi
+#          volumeMounts:
+#  - mountPath: /var/lib/mysql
+#              name: db-claim
+#  volumeClaimTemplates:
+#   - metadata:
+#        name: db-claim
+#        namespace: aulainfra
+#spec:
+# accessModes: ["ReadWriteOnce"]
+# storageClassName: gp2
+# resources:
+#   requests:
+# storage: 5Gi

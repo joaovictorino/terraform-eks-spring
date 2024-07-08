@@ -143,6 +143,8 @@ resource "aws_iam_policy" "iam_role_ec2_ebs" {
         "ec2:DeleteSnapshot",
         "ec2:DeleteTags",
         "ec2:DeleteVolume",
+        "ec2:DescribeVolumeStatus",
+        "ec2:DescribeVolumeAttribute",
         "ec2:DescribeInstances",
         "ec2:DescribeSnapshots",
         "ec2:DescribeTags",
@@ -158,6 +160,11 @@ POLICY
 
 resource "aws_iam_role_policy_attachment" "iam_role_policy_eks_node" {
   policy_arn = "arn:aws:iam::aws:policy/AmazonEKSWorkerNodePolicy"
+  role       = aws_iam_role.iam_role_ec2_eks.name
+}
+
+resource "aws_iam_role_policy_attachment" "iam_role_policy_eks_ec2_full_access" {
+  policy_arn = "arn:aws:iam::aws:policy/AmazonEC2FullAccess"
   role       = aws_iam_role.iam_role_ec2_eks.name
 }
 
