@@ -23,7 +23,7 @@ aws ecr get-login-password --region us-east-1 | docker login --username AWS --pa
 docker push 475154562783.dkr.ecr.us-east-1.amazonaws.com/springapp:latest
 
 # obter credenciais do EKS
-aws eks --region us-east-1 update-kubeconfig --name eks_demo
+aws eks --region us-east-1 update-kubeconfig --name eks-demo
 
 # subir configuração da aplicação
 kubectl apply -f eks/1-config

@@ -50,7 +50,7 @@ docker push 475154562783.dkr.ecr.us-east-1.amazonaws.com/springapp:latest
 Obter credenciais do EKS
 
 ```sh
-aws eks --region us-east-1 update-kubeconfig --name eks_demo
+aws eks --region us-east-1 update-kubeconfig --name eks-demo
 ```
 
 Subir configuração da aplicação
